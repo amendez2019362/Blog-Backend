@@ -9,6 +9,11 @@ export const publicationGet = async (req = request, res = response) => {
         const [total, publication] = await Promise.all([
             Publication.countDocuments(query),
             Publication.find(query)
+                .populate({
+                    path: 'comments',
+                    select: 'comment author -_id',
+                    match: { state: true }
+                })
                 .skip(Number(from))
                 .limit(Number(limit))
                 .lean()

@@ -21,6 +21,10 @@ const publicationSchema = mongoose.Schema({
         type: String,
         required: [true, 'URL is required']
     },
+    comments: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
     state: {
         type: Boolean,
         default: true

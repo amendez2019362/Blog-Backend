@@ -5,12 +5,14 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { dbConnection } from "./mongo.js";
 import publicationRoutes from '../src/publication/publication.routes.js';
+import commentRoutes from '../src/comentario/comment.routes.js'
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
     this.publicationPath = '/blog/v1/publication';
+    this.commentPath = '/blog/v1/comment';
 
     this.middlewares();
     this.conectDB();
@@ -23,6 +25,7 @@ class Server {
 
   routes() {
     this.app.use(this.publicationPath, publicationRoutes);
+    this.app.use(this.commentPath, commentRoutes);
   }
 
   middlewares() {
