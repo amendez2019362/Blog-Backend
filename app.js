@@ -1,7 +1,8 @@
-import { config } from 'dotenv';
+import { config } from "dotenv";
+
 config();
 
-import Server from './configs/server.js';
+import Server from "./configs/server.js";
 
 const server = new Server();
 
